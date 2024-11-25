@@ -1,7 +1,8 @@
-import {View, StyleSheet, ImageBackground} from 'react-native';
+import {View, StyleSheet, ImageBackground, Button} from 'react-native';
 import React from 'react';
 import ExploringSection from '../../components/exploringSection/ExploringSection';
 import {Background} from '../../assets/images';
+import Catogries from '../../components/catogries/Catogries';
 
 const HomeScreen = () => {
   return (
@@ -13,14 +14,18 @@ const HomeScreen = () => {
           </View>
         </ImageBackground>
       </View>
-      
+      <View style={styles.catogre}>
+        <Catogries />
+      </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
+  catogre: {
+    backgroundColor: 'white',
+  },
   sec: {
-    height: 400,
-    backgroundColor: 'transparents',
+    height: 300,
   },
   imagebackground: {
     position: 'absolute',
@@ -28,18 +33,17 @@ const styles = StyleSheet.create({
     top: -30,
     width: '100%',
 
-    transform: [
-      { rotate: '5deg' }
-    ]
+    transform: [{rotate: '5deg'}],
   },
   container: {
     flex: 1,
   },
-  explore: {flex: 1, width: '100%', left: 100, top: 30,
-    transform: [
-      { rotate: '-5deg' }
-    ]
-
+  explore: {
+    flex: 1,
+    width: '100%',
+    left: 100,
+    top: 30,
+    transform: [{rotate: '-5deg'}],
   },
 });
 export default HomeScreen;
