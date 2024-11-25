@@ -3,4 +3,5 @@ import Homeicon from './Homeicon.svg';
 import SearchIcon from './searchsvg.svg'
 import HeartIcon from './Heart.svg'
 import Billsvg from './billcion.svg'
-export {HeartIcon, Homeicon,SearchIcon,Profile,Billsvg};
+import Micro from './micro.svg'
+export {HeartIcon, Homeicon,SearchIcon,Profile,Billsvg,Micro};

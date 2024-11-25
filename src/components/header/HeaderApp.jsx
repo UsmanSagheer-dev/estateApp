@@ -27,16 +27,13 @@ const Styles = StyleSheet.create({
     paddingTop: 15,
     flexDirection: 'row',
   },
-  location:{flex:1,
+  location: {flex: 1},
+  subcontainer: {
+    flexDirection: 'row',
+    flex: 1,
 
-
+    justifyContent: 'flex-end',
+    gap: 10,
   },
-  subcontainer:{
-    flexDirection:'row',
-    flex:1,
-
-justifyContent:'flex-end',
-    gap:10
-  }
 });
 export default HeaderApp;
