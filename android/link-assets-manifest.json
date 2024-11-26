@@ -1,4 +1,13 @@
 {
   "migIndex": 1,
-  "data": []
+  "data": [
+    {
+      "path": "src/assets/fonts/EduAUVICWANTArrows-Regular.ttf",
+      "sha1": "eedaa046451d1b34798efa191ff602decaf278be"
+    },
+    {
+      "path": "src/assets/fonts/Raleway-Regular.ttf",
+      "sha1": "2b673d65ef7a66233c1fb1fd0424ef067a787cca"
+    }
+  ]
 }

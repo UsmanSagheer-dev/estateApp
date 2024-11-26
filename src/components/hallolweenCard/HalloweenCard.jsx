@@ -57,17 +57,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 700,
+    fontFamily:'Raleway-Regular'
   },
   saletitle: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 700,
+      fontFamily:'Raleway-Regular'
   },
   subtitle: {
     color: '#fff',
     fontSize: 10,
     fontWeight:400,
     marginTop: 5,
+     fontFamily:'Raleway-Regular'
   },
   button: {
     backgroundColor: '#1a4f87', 
