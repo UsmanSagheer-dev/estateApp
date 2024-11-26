@@ -6,18 +6,18 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {Halloimage} from '../../assets/images';
-const HalloweenCard = () => {
+
+const HalloweenCard = ({backImage, firstTitle, secondTitle, discription}) => {
   return (
     <ImageBackground
-      source={Halloimage}
+      source={backImage}
       style={styles.card}
       imageStyle={styles.imageStyle}>
       <View style={styles.textContainer}>
         <View style={styles.subcontainer}>
-          <Text style={styles.title}>Halloween </Text>
-          <Text style={styles.saletitle}> Sale!</Text>
-          <Text style={styles.subtitle}>All discount up to 60%</Text>
+          <Text style={styles.title}>{firstTitle}</Text>
+          <Text style={styles.saletitle}> {secondTitle}</Text>
+          <Text style={styles.subtitle}>{discription}</Text>
         </View>
       </View>
       <TouchableOpacity style={styles.button}>
@@ -29,11 +29,11 @@ const HalloweenCard = () => {
 
 const styles = StyleSheet.create({
   card: {
-    width: '65%',
-    height: 200,
+    width: 270,
+    height: 180,
     borderRadius: 20,
     overflow: 'hidden',
-    marginHorizontal: '5%',
+    left: 24,
     marginTop: 20,
     justifyContent: 'space-between',
 
@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
   },
   imageStyle: {
     borderRadius: 20,
-    width:'100%'
+    width: '100%',
   },
   subcontainer: {
     top: 41,
-    left:22
+    left: 22,
   },
   textContainer: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -57,31 +57,30 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 700,
-    fontFamily:'Raleway-Regular'
+    fontFamily: 'Raleway-Regular',
   },
   saletitle: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 700,
-      fontFamily:'Raleway-Regular'
+    fontFamily: 'Raleway-Regular',
   },
   subtitle: {
     color: '#fff',
     fontSize: 10,
-    fontWeight:400,
+    fontWeight: 400,
     marginTop: 5,
-     fontFamily:'Raleway-Regular'
+    fontFamily: 'Raleway-Regular',
   },
   button: {
-    backgroundColor: '#1a4f87', 
-    position:"absolute",
-   top:150,
-   borderTopRightRadius:25,
-   width:93,
-   height:53,
-   justifyContent:'center',
-   alignItems:'center'
-
+    backgroundColor: '#1a4f87',
+    position: 'absolute',
+    top: 130,
+    borderTopRightRadius: 25,
+    width: 93,
+    height: 53,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   arrow: {
     color: '#fff',
