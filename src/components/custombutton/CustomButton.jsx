@@ -14,17 +14,19 @@ const CustomButton = ({color, onPress, textColor, title}) => {
 const styles = StyleSheet.create({
   button: {
     paddingTop: 17.5,
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingLeft: 30,
+    paddingRight: 30,
     paddingBottom: 17,
-    borderRadius: 8,
+
     alignItems: 'center',
 
     borderRadius: 20,
   },
   buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 10,
+    fontWeight: 500,
+    fontFamily:'Raleway-Regular',
+
   },
 });
 
