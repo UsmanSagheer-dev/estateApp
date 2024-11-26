@@ -1,32 +1,32 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Estateimg, Heart} from '../../assets/images';
-const ApartmentCard = () => {
+import { Heart} from '../../assets/images';
+const ApartmentCard = ({image,labelheading,titlemain,subtitle,rating,locationTitle,priceSet,month}) => {
   return (
     <View style={styles.card}>
       <View style={styles.imageContainer}>
-        <Image source={Estateimg} style={styles.image} />
+        <Image source={image} style={styles.image} />
         <TouchableOpacity style={styles.heartIcon}>
           <Image source={Heart} style={styles.setHeart} />
         </TouchableOpacity>
         <View style={styles.label}>
-          <Text style={styles.labelText}>Apartment</Text>
+          <Text style={styles.labelText}>{labelheading}</Text>
         </View>
       </View>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.title}>Sky Dandelions </Text>
-        <Text style={styles.title}> Apartment</Text>
+        <Text style={styles.title}>{titlemain}</Text>
+        <Text style={styles.title}> {subtitle}</Text>
         <View style={styles.add}>
           <View style={styles.ratingRow}>
             <Image source={Heart} style={styles.setHeart} />
-            <Text style={styles.ratingText}>4.9</Text>
+            <Text style={styles.ratingText}>{rating}</Text>
           </View>
-          <Text style={styles.location}>Jakarta, Indonesia</Text>
+          <Text style={styles.location}>{locationTitle}</Text>
         </View>
         <View style={styles.text}>
-          <Text style={styles.price}>$290/</Text>
-          <Text style={styles.pricemonth}>month</Text>
+          <Text style={styles.price}>${priceSet}</Text>
+          <Text style={styles.pricemonth}>{month}</Text>
         </View>
       </View>
     </View>
@@ -44,13 +44,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 5,
-    margin: 20,
+   left:24,
     flexDirection: 'row',
   },
   imageContainer: {
     padding: 8,
   },
-  add: {},
+  add: {
+    marginTop:2
+  },
+  setHeart:{
+    width:11,
+    height:11
+  },
   image: {
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
@@ -59,9 +65,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 16,
     left: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: '#8BC83F',
     borderRadius: 20,
     padding: 5,
+   
   },
   label: {
     position: 'absolute',

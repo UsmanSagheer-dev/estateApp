@@ -1,11 +1,18 @@
-import {View, StyleSheet, ImageBackground, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+  Text,
+} from 'react-native';
 import React from 'react';
 import ExploringSection from '../../components/exploringSection/ExploringSection';
 import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
 import FeatureHeader from '../../components/featureHeader/FeatureHeader';
-import ApartmentCard from '../../components/apartmentCard/ApartmentCard';
+
+import FeatureCard from '../../components/featureCard_group/FeatureCard';
 
 const HomeScreen = () => {
   return (
@@ -28,8 +35,28 @@ const HomeScreen = () => {
           <FeatureHeader />
         </View>
         <View style={styles.apart}>
-          <ApartmentCard />
+          <FeatureCard />
         </View>
+        {/* <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View> */}
       </ScrollView>
     </View>
   );
@@ -70,9 +97,11 @@ const styles = StyleSheet.create({
   feature: {
     top: 15,
   },
-  apart:{
-    top:40
-  }
+  apart: {
+    top: 40,
+    height: '100%',
+    marginBottom:15
+  },
 });
 
 export default HomeScreen;
