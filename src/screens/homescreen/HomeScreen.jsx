@@ -4,6 +4,7 @@ import ExploringSection from '../../components/exploringSection/ExploringSection
 import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
+import FeatureHeader from '../../components/featureHeader/FeatureHeader';
 
 const HomeScreen = () => {
   return (
@@ -21,6 +22,9 @@ const HomeScreen = () => {
         </View>
         <View style={styles.hallo}>
           <SaleGroupCard />
+        </View>
+        <View style={styles.feature}>
+          <FeatureHeader/>
         </View>
       </ScrollView>
     </View>
@@ -40,16 +44,16 @@ const styles = StyleSheet.create({
   },
   imagebackground: {
     position: 'absolute',
-    left: -100,
-    top: -30,
+    left: -130,
+    top: -40,
     width: '100%',
     transform: [{rotate: '5deg'}],
   },
   explore: {
     flex: 1,
     width: '100%',
-    left: 100,
-    top: 30,
+    left: 130,
+    top: 40,
     transform: [{rotate: '-5deg'}],
   },
   catogre: {
@@ -59,6 +63,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     top: 10,
   },
+  feature:{
+    top:15
+  }
 });
 
 export default HomeScreen;
