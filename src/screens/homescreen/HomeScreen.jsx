@@ -5,6 +5,7 @@ import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
 import FeatureHeader from '../../components/featureHeader/FeatureHeader';
+import ApartmentCard from '../../components/apartmentCard/ApartmentCard';
 
 const HomeScreen = () => {
   return (
@@ -24,7 +25,10 @@ const HomeScreen = () => {
           <SaleGroupCard />
         </View>
         <View style={styles.feature}>
-          <FeatureHeader/>
+          <FeatureHeader />
+        </View>
+        <View style={styles.apart}>
+          <ApartmentCard />
         </View>
       </ScrollView>
     </View>
@@ -63,8 +67,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     top: 10,
   },
-  feature:{
-    top:15
+  feature: {
+    top: 15,
+  },
+  apart:{
+    top:40
   }
 });
 
