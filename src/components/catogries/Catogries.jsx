@@ -7,6 +7,7 @@ const Catogries = () => {
     {id: 1, title: 'All', color: '#F5F4F8', textColor: '#252B5C'},
     {id: 2, title: 'House', color: '#F5F4F8', textColor: '#252B5C'},
     {id: 3, title: 'Apartment', color: '#F5F4F8', textColor: '#252B5C'},
+
     {id: 4, title: 'House', color: '#F5F4F8', textColor: '#252B5C'},
   ];
 
