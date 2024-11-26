@@ -3,7 +3,7 @@ import React from 'react';
 import ExploringSection from '../../components/exploringSection/ExploringSection';
 import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
-
+import HalloweenCard from '../../components/hallolweenCard/HalloweenCard';
 const HomeScreen = () => {
   return (
     <View style={styles.container}>
@@ -16,6 +16,9 @@ const HomeScreen = () => {
       </View>
       <View style={styles.catogre}>
         <Catogries />
+      </View>
+      <View style={styles.hallo}>
+        <HalloweenCard />
       </View>
     </View>
   );
