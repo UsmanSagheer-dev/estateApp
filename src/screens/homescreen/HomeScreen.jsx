@@ -1,9 +1,18 @@
-import {View, StyleSheet, ImageBackground, ScrollView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+  Text,
+} from 'react-native';
 import React from 'react';
 import ExploringSection from '../../components/exploringSection/ExploringSection';
 import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
+import FeatureHeader from '../../components/featureHeader/FeatureHeader';
+
+import FeatureCard from '../../components/featureCard_group/FeatureCard';
 
 const HomeScreen = () => {
   return (
@@ -22,6 +31,32 @@ const HomeScreen = () => {
         <View style={styles.hallo}>
           <SaleGroupCard />
         </View>
+        <View style={styles.feature}>
+          <FeatureHeader />
+        </View>
+        <View style={styles.apart}>
+          <FeatureCard />
+        </View>
+        {/* <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View>
+        <View>
+          <Text>
+            asdfasd
+          </Text>
+        </View> */}
       </ScrollView>
     </View>
   );
@@ -40,16 +75,16 @@ const styles = StyleSheet.create({
   },
   imagebackground: {
     position: 'absolute',
-    left: -100,
-    top: -30,
+    left: -130,
+    top: -40,
     width: '100%',
     transform: [{rotate: '5deg'}],
   },
   explore: {
     flex: 1,
     width: '100%',
-    left: 100,
-    top: 30,
+    left: 130,
+    top: 40,
     transform: [{rotate: '-5deg'}],
   },
   catogre: {
@@ -58,6 +93,14 @@ const styles = StyleSheet.create({
   hallo: {
     backgroundColor: 'white',
     top: 10,
+  },
+  feature: {
+    top: 15,
+  },
+  apart: {
+    top: 40,
+    height: '100%',
+    marginBottom:15
   },
 });
 
