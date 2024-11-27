@@ -1,11 +1,14 @@
-import {NavigationContainer} from '@react-navigation/native';
-import MyTabs from './src/navigation/BottomTabNavigator';
-const App = () => {
-  return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
-};
+import React from 'react';
+
+import AppNavigator from '../AwesomeProject/src/navigation/AppNavigator';
+import { AuthProvider } from './src/context/AuthContext';
+
+const App = () => (
+  <AuthProvider>
+     <AppNavigator />
+  </AuthProvider>
+
+ 
+);
 
 export default App;
