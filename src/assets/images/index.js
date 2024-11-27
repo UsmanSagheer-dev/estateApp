@@ -5,6 +5,8 @@ import Background from './background.png'
 import Halloimage from './halloimage.png'
 import Estateimg from './estateimg.png'
 import Heart from './Heart.png'
+import LocationImage from './locationimage.png'
+import Girl from './girl.png'
 export {
     LocationIcon,
     Dropdown,
@@ -12,5 +14,7 @@ export {
     Background,
     Halloimage,
     Estateimg,
-    Heart
+    Heart,
+    LocationImage,
+    Girl
 }

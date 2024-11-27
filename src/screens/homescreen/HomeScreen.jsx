@@ -11,8 +11,9 @@ import {Background} from '../../assets/images';
 import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
 import FeatureHeader from '../../components/featureHeader/FeatureHeader';
-
 import FeatureCard from '../../components/featureCard_group/FeatureCard';
+import LocationHeader from '../../components/locationHeader/LocationHeader';
+import LocationButtonGroup from '../../components/locatonButtonGroup/LocationButtonGroup';
 
 const HomeScreen = () => {
   return (
@@ -32,31 +33,17 @@ const HomeScreen = () => {
           <SaleGroupCard />
         </View>
         <View style={styles.feature}>
-          <FeatureHeader />
+          <FeatureHeader title1="Featured Estates" title2="View all" />
         </View>
         <View style={styles.apart}>
           <FeatureCard />
         </View>
-        {/* <View>
-          <Text>
-            asdfasd
-          </Text>
+        <View style={styles.location}>
+          <FeatureHeader title1="Top Locations" title2="explore" />
         </View>
-        <View>
-          <Text>
-            asdfasd
-          </Text>
+        <View style={styles.locationset}>
+          <LocationButtonGroup/>
         </View>
-        <View>
-          <Text>
-            asdfasd
-          </Text>
-        </View>
-        <View>
-          <Text>
-            asdfasd
-          </Text>
-        </View> */}
       </ScrollView>
     </View>
   );
@@ -99,9 +86,15 @@ const styles = StyleSheet.create({
   },
   apart: {
     top: 40,
-    height: '100%',
-    marginBottom:15
+    height: 180,
   },
+  location: {
+    height: 80,
+    top: 35,
+  },
+  locationset:{
+    top:35
+  }
 });
 
 export default HomeScreen;
