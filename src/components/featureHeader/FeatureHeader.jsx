@@ -1,12 +1,12 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const FeatureHeader = () => {
+const FeatureHeader = ({title1,title2}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Featured Estates</Text>
+      <Text style={styles.title}>{title1}</Text>
       <TouchableOpacity>
-        <Text style={styles.subtitle}>view all</Text>
+        <Text style={styles.subtitle}>{title2}</Text>
       </TouchableOpacity>
     </View>
   );
