@@ -80,7 +80,7 @@
       fontWeight: 500,
       fontFamily: 'Lato-Regular',
       color: '#252B5C',
-      top: 53,
+      top: 30,
       marginLeft: 24,
     },
     text1: {
@@ -93,7 +93,7 @@
       justifyContent: 'center',
       alignItems: 'center',
       gap: 10,
-      top: 100,
+      top: 60,
     },
     dividerText: {
       textAlign: 'center',
@@ -111,14 +111,14 @@
       justifyContent: 'center',
       width: '85%',
       left: 28,
-      top: 170,
+      top: 100,
     },
     buttoncontainer1: {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       gap: 10,
-      top: 210,
+      top: 130,
     },
     textaccount: {
       fontSize: 12,
@@ -126,8 +126,8 @@
       fontFamily: 'Lato-Regular',
       color: '#252B5C',
       justifyContent:'center',
-      top:280,
-      marginLeft:120
+      top:180,
+      marginLeft:100
     },
     text2: {
       fontSize: 12,
