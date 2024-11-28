@@ -10,6 +10,9 @@ import Girl from './girl.png'
 import Loginpic from './loginpic.png'
 import Google from './gooleimage.png'
 import Facebook from './facebookimage.png'
+import loginformimage from './loginformimage.png'
+import EmailIcon from './emailicon.png'
+import LockIcon from './passwordicon.png'
 export {
     LocationIcon,
     Dropdown,
@@ -22,5 +25,8 @@ export {
     Girl,
     Loginpic,
     Google,
-    Facebook
+    Facebook,
+    loginformimage,
+    EmailIcon,
+    LockIcon,
 }

@@ -5,6 +5,7 @@
   import LoginImage from '../../components/loginimage/LoginImage';
   import LoginButton from '../../components/loginButtons/LoginButton';
   import CustomButton from '../../components/custombutton/CustomButton';
+import LoginFormScreen from '../loginform/LoginFormScreen';
   const LoginScreen = ({navigation}) => {
     const {login} = useAuth();
     const data = [
@@ -31,7 +32,7 @@
         </Text>
 
         <View style={styles.buttoncontainer}>
-          <LoginButton title="Continue with Email" onPress={login} />
+          <LoginButton title="Continue with Email" onPress={() => navigation.navigate('LoginForm')} />
           {/* <LoginButton
             title="Go to Register"
             onPress={() => navigation.navigate('Register')}
