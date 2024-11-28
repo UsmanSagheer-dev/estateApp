@@ -7,6 +7,9 @@ import Estateimg from './estateimg.png'
 import Heart from './Heart.png'
 import LocationImage from './locationimage.png'
 import Girl from './girl.png'
+import Loginpic from './loginpic.png'
+import Google from './gooleimage.png'
+import Facebook from './facebookimage.png'
 export {
     LocationIcon,
     Dropdown,
@@ -16,5 +19,8 @@ export {
     Estateimg,
     Heart,
     LocationImage,
-    Girl
+    Girl,
+    Loginpic,
+    Google,
+    Facebook
 }
