@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: '#222222',
     marginTop: 5,
+    
     fontFamily: 'Lato-Regular',
   },
 });

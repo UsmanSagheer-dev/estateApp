@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { Images } from '../../../assets/images/images'; // Assuming you have an `Images` object
+import { Images } from '../../../assets/images/images'; 
 
 const TabBarIcon = ({ route, focused }) => {
-  // Define a mapping for the icons
+
   const iconMap = {
     Home: focused ? Images.HOME_ICON : Images.Images.HOME_ICON ,
     Profile: focused ? Images.Images.HOME_ICON  : Images.Images.HOME_ICON ,
@@ -12,7 +12,7 @@ const TabBarIcon = ({ route, focused }) => {
     default: Images.defaultIcon,
   };
 
-  const iconSource = iconMap[route] || iconMap.default; // Fallback to default icon if route not found
+  const iconSource = iconMap[route] || iconMap.default;
 
   return (
     <Image

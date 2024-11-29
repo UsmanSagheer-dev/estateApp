@@ -2,7 +2,13 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {loginformimage} from '../../assets/images';
 import Inputs from '../../components/inputs/Inputs';
+import DividerContainer from '../../components/dividerContainer/DividerContainer';
+import LoginButton from '../../components/loginButtons/LoginButton';
+import ButtonContainer from '../../components/buttonContainer/ButtonContainer';
+import TextAccount from '../../components/textAccount/TextAccount';
+import { useNavigation } from '@react-navigation/native';
 const LoginFormScreen = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.imagecontainer}>
@@ -17,7 +23,19 @@ const LoginFormScreen = () => {
         </Text>
       </View>
       <View style={styles.inputcontainer}>
-        <Inputs/>
+        <Inputs />
+      </View>
+      <View style={styles.loginButtonContainer}>
+        <LoginButton title="Login" />
+      </View>
+      <View style={styles.dividerContainer}>
+        <DividerContainer />
+      </View>
+      <View style={styles.buttonContainer1}>
+        <ButtonContainer />
+      </View>
+      <View style={styles.textAccountContainer}>
+        <TextAccount onpress={() => navigation.navigate('Register')} />
       </View>
     </View>
   );
@@ -57,6 +75,20 @@ const styles = StyleSheet.create({
   },
   inputcontainer: {
     marginTop: 34,
+  },
+  loginButtonContainer: {
+    marginTop: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dividerContainer: {
+top:41
+  },
+  buttonContainer1: {
+    marginTop: 70,
+  },
+  textAccountContainer: {
+    marginTop: 35,
   },
 });
 
