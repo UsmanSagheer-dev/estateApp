@@ -13,6 +13,7 @@ import Facebook from './facebookimage.png'
 import loginformimage from './loginformimage.png'
 import EmailIcon from './emailicon.png'
 import LockIcon from './passwordicon.png'
+import BackArrow from './gobackicon.png'
 export {
     LocationIcon,
     Dropdown,
@@ -29,4 +30,5 @@ export {
     loginformimage,
     EmailIcon,
     LockIcon,
+    BackArrow,
 }

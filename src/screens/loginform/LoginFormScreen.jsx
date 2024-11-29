@@ -1,14 +1,20 @@
 import {View, Text, StyleSheet, Image} from 'react-native';
-import React from 'react';
-import {loginformimage} from '../../assets/images';
-import Inputs from '../../components/inputs/Inputs';
+import React, {useState} from 'react';
+import {loginformimage, EmailIcon, LockIcon} from '../../assets/images/index';
+import InputField from '../../components/inputs/Inputs';
 import DividerContainer from '../../components/dividerContainer/DividerContainer';
 import LoginButton from '../../components/loginButtons/LoginButton';
 import ButtonContainer from '../../components/buttonContainer/ButtonContainer';
 import TextAccount from '../../components/textAccount/TextAccount';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+
 const LoginFormScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  const [emailTextAlign, setEmailTextAlign] = useState('left');
+  const [passwordTextAlign, setPasswordTextAlign] = useState('left');
+
   return (
     <View style={styles.container}>
       <View style={styles.imagecontainer}>
@@ -19,14 +25,36 @@ const LoginFormScreen = () => {
           Let's <Text style={styles.text1}>Sign In</Text>
         </Text>
         <Text style={styles.text2}>
-          quis nostrud exercitation ullamco laboris nisi ut
+          Quis nostrud exercitation ullamco laboris nisi ut
         </Text>
       </View>
       <View style={styles.inputcontainer}>
-        <Inputs />
+        <View style={styles.groupContainer}>
+          <InputField
+            placeholder="Email"
+            icon={EmailIcon}
+            secureTextEntry={false}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <InputField
+            placeholder="Password"
+            icon={LockIcon}
+            secureTextEntry={true}
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
+        <View style={styles.bottomContainer}>
+          <Text style={styles.showPasswordText}>Show Password</Text>
+          <Text style={styles.forgotText}>Forgot Password?</Text>
+        </View>
       </View>
       <View style={styles.loginButtonContainer}>
-        <LoginButton title="Login" />
+        <LoginButton
+          title="Login"
+          onPress={() => console.log('Login clicked')}
+        />
       </View>
       <View style={styles.dividerContainer}>
         <DividerContainer />
@@ -71,9 +99,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: '#252B5C',
-    top: 20,
+    marginTop: 20,
   },
   inputcontainer: {
+    marginHorizontal: 24,
     marginTop: 34,
   },
   loginButtonContainer: {
@@ -82,13 +111,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dividerContainer: {
-top:41
+    marginTop: 41,
   },
   buttonContainer1: {
     marginTop: 70,
   },
   textAccountContainer: {
     marginTop: 35,
+  },
+  groupContainer: {
+    marginTop: 34,
+    gap: 15,
+  },
+  bottomContainer: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+  },
+  showPasswordText: {
+    fontFamily: 'Raleway-Regular',
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#1F4C6B',
+  },
+  forgotText: {
+    fontFamily: 'Raleway-Regular',
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#1F4C6B',
   },
 });
 
