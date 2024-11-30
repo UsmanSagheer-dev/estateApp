@@ -7,7 +7,7 @@ import { AuthProvider } from './src/context/AuthContext';
 
 const App = () => (
   <Provider store={store}>
-    <AuthProvider>
+    <AuthProvider >
       <AppNavigator />
     </AuthProvider>
   </Provider>

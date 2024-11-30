@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Image, Text} from 'react-native';
+import {View, TextInput, StyleSheet, Image} from 'react-native';
 
 const InputField = ({
   placeholder,
@@ -25,21 +25,13 @@ const InputField = ({
           onChangeText={onChangeText}
         />
       </View>
-      {/* <View style={styles.bottomContainer}>
-        <Text style={styles.showPasswordText}>Show Password</Text>
-        <Text style={styles.forgotText}>Forgot Password?</Text>
-      </View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
-
+  container: {},
   inputWrapper: {
-   
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F5F4F8',
@@ -52,7 +44,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     height: 70,
   },
- 
 });
 
 export default InputField;

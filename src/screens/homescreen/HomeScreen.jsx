@@ -53,9 +53,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+ 
   },
   scrollContainer: {
-    flexGrow: 1,
+
   },
   sec: {
     height: 300,
