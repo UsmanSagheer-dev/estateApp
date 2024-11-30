@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const initialState = {
-  users: [],
   currentUser: null,
   isAuthenticated: false,
   error: null,
@@ -11,65 +12,44 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    signup: (state, action) => {
-      const { email, password, name } = action.payload;
-      
-      // Check if user already exists
-      const userExists = state.users.find(user => user.email === email);
-      if (userExists) {
-        state.error = 'User already exists';
-        return;
-      }
-
-      // Create new user
-      const newUser = {
-        id: Date.now(),
-        email,
-        password,
-        name,
-      };
-
-      // Add to users array
-      state.users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(state.users));
-
-      // Log user in after signup
-      state.currentUser = { id: newUser.id, email: newUser.email, name: newUser.name };
+    signupStart: (state) => {
+      state.error = null;
+    },
+    signupSuccess: (state, action) => {
+      state.currentUser = action.payload;
       state.isAuthenticated = true;
-      state.error = null;
-      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
     },
-
-    login: (state, action) => {
-      const { email, password } = action.payload;
-      
-      // Find user
-      const user = state.users.find(
-        user => user.email === email && user.password === password
-      );
-
-      if (user) {
-        state.currentUser = { id: user.id, email: user.email, name: user.name };
-        state.isAuthenticated = true;
-        state.error = null;
-        localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-      } else {
-        state.error = 'Invalid email or password';
-      }
-    },
-
-    logout: (state) => {
-      state.currentUser = null;
-      state.isAuthenticated = false;
-      state.error = null;
-      localStorage.removeItem('currentUser');
-    },
-
-    clearError: (state) => {
-      state.error = null;
+    signupFailure: (state, action) => {
+      state.error = action.payload;
     },
   },
 });
 
-export const { signup, login, logout, clearError } = authSlice.actions;
+export const { signupStart, signupSuccess, signupFailure } = authSlice.actions;
+
+export const signup = ({ email, password, name }) => async (dispatch) => {
+  dispatch(signupStart());
+  try {
+    const userCredential = await auth().createUserWithEmailAndPassword(email, password);
+    if (name) {
+      await userCredential.user.updateProfile({ displayName: name });
+    }
+
+    const userDoc = {
+      id: userCredential.user.uid,
+      name: name || 'Anonymous',
+      email,
+      createdAt: firestore.Timestamp.now(),
+    };
+
+    await firestore().collection('users').doc(userCredential.user.uid).set(userDoc);
+
+    dispatch(signupSuccess(userCredential.user));
+    return userCredential.user;
+  } catch (error) {
+    dispatch(signupFailure(error.message));
+    throw error;
+  }
+};
+
 export default authSlice.reducer;

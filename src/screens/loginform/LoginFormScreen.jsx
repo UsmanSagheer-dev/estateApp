@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {loginformimage, EmailIcon, LockIcon} from '../../assets/images/index';
 import InputField from '../../components/inputs/Inputs';
@@ -16,56 +16,58 @@ const LoginFormScreen = () => {
   const [passwordTextAlign, setPasswordTextAlign] = useState('left');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.imagecontainer}>
-        <Image source={loginformimage} style={styles.image} />
-      </View>
-      <View style={styles.textcontainer}>
-        <Text style={styles.text}>
-          Let's <Text style={styles.text1}>Sign In</Text>
-        </Text>
-        <Text style={styles.text2}>
-          Quis nostrud exercitation ullamco laboris nisi ut
-        </Text>
-      </View>
-      <View style={styles.inputcontainer}>
-        <View style={styles.groupContainer}>
-          <InputField
-            placeholder="Email"
-            icon={EmailIcon}
-            secureTextEntry={false}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <InputField
-            placeholder="Password"
-            icon={LockIcon}
-            secureTextEntry={true}
-            value={password}
-            onChangeText={setPassword}
+    <ScrollView style={styles.container}>
+      <View style={styles.mainContent}>
+        <View style={styles.imagecontainer}>
+          <Image source={loginformimage} style={styles.image} />
+        </View>
+        <View style={styles.textcontainer}>
+          <Text style={styles.text}>
+            Let's <Text style={styles.text1}>Sign In</Text>
+          </Text>
+          <Text style={styles.text2}>
+            Quis nostrud exercitation ullamco laboris nisi ut
+          </Text>
+        </View>
+        <View style={styles.inputcontainer}>
+          <View style={styles.groupContainer}>
+            <InputField
+              placeholder="Email"
+              icon={EmailIcon}
+              secureTextEntry={false}
+              value={email}
+              onChangeText={setEmail}
+            />
+            <InputField
+              placeholder="Password"
+              icon={LockIcon}
+              secureTextEntry={true}
+              value={password}
+              onChangeText={setPassword}
+            />
+          </View>
+          <View style={styles.bottomContainer}>
+            <Text style={styles.showPasswordText}>Show Password</Text>
+            <Text style={styles.forgotText}>Forgot Password?</Text>
+          </View>
+        </View>
+        <View style={styles.loginButtonContainer}>
+          <LoginButton
+            title="Login"
+            onPress={() => console.log('Login clicked')}
           />
         </View>
-        <View style={styles.bottomContainer}>
-          <Text style={styles.showPasswordText}>Show Password</Text>
-          <Text style={styles.forgotText}>Forgot Password?</Text>
+        <View style={styles.dividerContainer}>
+          <DividerContainer />
+        </View>
+        <View style={styles.buttonContainer1}>
+          <ButtonContainer />
+        </View>
+        <View style={styles.textAccountContainer}>
+          <TextAccount onpress={() => navigation.navigate('Register')} />
         </View>
       </View>
-      <View style={styles.loginButtonContainer}>
-        <LoginButton
-          title="Login"
-          onPress={() => console.log('Login clicked')}
-        />
-      </View>
-      <View style={styles.dividerContainer}>
-        <DividerContainer />
-      </View>
-      <View style={styles.buttonContainer1}>
-        <ButtonContainer />
-      </View>
-      <View style={styles.textAccountContainer}>
-        <TextAccount onpress={() => navigation.navigate('Register')} />
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -73,6 +75,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+  },
+  mainContent: {
+    flex: 1,
+    marginBottom: 100,
   },
   imagecontainer: {
     width: '100%',

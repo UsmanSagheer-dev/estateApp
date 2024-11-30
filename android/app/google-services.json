@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "531769047667",
+    "project_id": "asdfdsfeert",
+    "storage_bucket": "asdfdsfeert.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531769047667:android:5362fdde0c7d961e890806",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8IeCV9U3mhwQ0UeEMF3q1zIy4JBTy7Ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

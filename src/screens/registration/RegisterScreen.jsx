@@ -1,27 +1,56 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  TextInput,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import {EmailIcon, LockIcon} from '../../assets/images/index';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '../../store/authSlice/authSlice';
+import { EmailIcon, LockIcon, BackArrow } from '../../assets/images/index';
 import InputField from '../../components/inputs/Inputs';
-import {BackArrow} from '../../assets/images/index';
 import LoginButton from '../../components/loginButtons/LoginButton';
-const RegisterScreen = ({navigation}) => {
+
+const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userExists, setUserExists] = useState(false);
+  const [showError, setShowError] = useState(false);
+
+  const dispatch = useDispatch();
+  const { error, isAuthenticated } = useSelector((state) => state.auth);
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleRegister = async () => {
+    if (!name || !email || !password) {
+      console.log('All fields are required.');
+      return;
+    }
+    if (!validateEmail(email)) {
+      console.log('Invalid email format.');
+      return;
+    }
+    try {
+      await dispatch(signup({ email, password, name }));
+      console.log('User registered successfully');
+    } catch (err) {
+      console.error('Registration failed:', err.message);
+      if (err.message.includes('email-already-in-use')) {
+        setShowError(true);
+      }
+    }
+  };
+
+  if (isAuthenticated) {
+    navigation.navigate('Home');
+  }
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.navigate('LoginForm')}>
+        onPress={() => navigation.navigate('LoginForm')}
+      >
         <Image source={BackArrow} style={styles.backIcon} />
       </TouchableOpacity>
       <View style={styles.titleContainer}>
@@ -52,17 +81,13 @@ const RegisterScreen = ({navigation}) => {
           onChangeText={setPassword}
         />
       </View>
-      <View style={styles.bottomContainer}>
-        <Text style={styles.showPasswordText}>Show Password</Text>
-        <Text style={styles.forgotText}>Terms of service</Text>
-      </View>
+      {error && <Text style={{ color: 'red', marginLeft: 24 }}>{error}</Text>}
       <View style={styles.buttonContainer}>
-        <LoginButton title="Register" onPress={() => navigation.navigate('Home')} />
+        <LoginButton title="Register" onPress={handleRegister} />
       </View>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
