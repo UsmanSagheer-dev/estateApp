@@ -92,9 +92,11 @@ const styles = StyleSheet.create({
   location: {
     height: 80,
     top: 35,
+    marginBottom: 20,
   },
-  locationset:{
-    top:35
+  locationset: {
+    top: 25,
+    marginBottom: 50,
   }
 });
 

@@ -16,7 +16,7 @@ const authSlice = createSlice({
       state.error = null;
     },
     signupSuccess: (state, action) => {
-      state.currentUser = action.payload;
+      state.currentUser = action.payload; 
       state.isAuthenticated = true;
     },
     signupFailure: (state, action) => {
@@ -31,6 +31,7 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
   dispatch(signupStart());
   try {
     const userCredential = await auth().createUserWithEmailAndPassword(email, password);
+    
     if (name) {
       await userCredential.user.updateProfile({ displayName: name });
     }
@@ -44,10 +45,17 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
 
     await firestore().collection('users').doc(userCredential.user.uid).set(userDoc);
 
-    dispatch(signupSuccess(userCredential.user));
-    return userCredential.user;
+    const sanitizedUser = {
+      uid: userCredential.user.uid,
+      email: userCredential.user.email,
+      displayName: userCredential.user.displayName || 'Anonymous',
+      photoURL: userCredential.user.photoURL || null,
+    };
+
+    dispatch(signupSuccess(sanitizedUser)); 
+    return sanitizedUser;
   } catch (error) {
-    dispatch(signupFailure(error.message));
+    dispatch(signupFailure(error.message)); 
     throw error;
   }
 };
