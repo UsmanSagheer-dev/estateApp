@@ -12,7 +12,6 @@ import Catogries from '../../components/catogries/Catogries';
 import SaleGroupCard from '../../components/salegroupCard/SaleGroupCard';
 import FeatureHeader from '../../components/featureHeader/FeatureHeader';
 import FeatureCard from '../../components/featureCard_group/FeatureCard';
-import LocationHeader from '../../components/locationHeader/LocationHeader';
 import LocationButtonGroup from '../../components/locatonButtonGroup/LocationButtonGroup';
 
 const HomeScreen = () => {
@@ -42,7 +41,7 @@ const HomeScreen = () => {
           <FeatureHeader title1="Top Locations" title2="explore" />
         </View>
         <View style={styles.locationset}>
-          <LocationButtonGroup/>
+          <LocationButtonGroup />
         </View>
       </ScrollView>
     </View>
@@ -53,11 +52,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
- 
   },
-  scrollContainer: {
-
-  },
+  scrollContainer: {},
   sec: {
     height: 300,
   },
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
   locationset: {
     top: 25,
     marginBottom: 50,
-  }
+  },
 });
 
 export default HomeScreen;

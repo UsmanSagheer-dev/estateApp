@@ -22,11 +22,35 @@ const authSlice = createSlice({
     signupFailure: (state, action) => {
       state.error = action.payload;
     },
+    signinStart: (state) => {
+      state.error = null;
+    },
+    signinSuccess: (state, action) => {
+      state.currentUser = action.payload;
+      state.isAuthenticated = true;
+    },
+    signinFailure: (state, action) => {
+      state.error = action.payload;
+    },
+
   },
 });
 
-export const { signupStart, signupSuccess, signupFailure } = authSlice.actions;
-
+export const { signupStart, signupSuccess, signupFailure, signinStart, signinSuccess, signinFailure } = authSlice.actions;
+ 
+export const signin = ({ email, password }) => async (dispatch) => {
+  dispatch(signinStart());
+  try {
+    const userCredential = await auth().signInWithEmailAndPassword(email, password);
+    dispatch(signinSuccess(userCredential.user));
+  } catch (error) {
+    dispatch(signinFailure(error.message));
+  }
+};
+export const signout = () => async (dispatch) => {
+  await auth().signOut();
+  dispatch(signoutSuccess());
+};
 export const signup = ({ email, password, name }) => async (dispatch) => {
   dispatch(signupStart());
   try {
@@ -59,5 +83,6 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
     throw error;
   }
 };
+
 
 export default authSlice.reducer;

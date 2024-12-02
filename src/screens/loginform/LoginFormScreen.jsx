@@ -1,5 +1,8 @@
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {signin} from '../../store/authSlice/authSlice';
+import auth from '@react-native-firebase/auth';
 import {loginformimage, EmailIcon, LockIcon} from '../../assets/images/index';
 import InputField from '../../components/inputs/Inputs';
 import DividerContainer from '../../components/dividerContainer/DividerContainer';
@@ -12,8 +15,19 @@ const LoginFormScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const [emailTextAlign, setEmailTextAlign] = useState('left');
-  const [passwordTextAlign, setPasswordTextAlign] = useState('left');
+  const {isAuthenticated, error: authError} = useSelector(state => state.auth);
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(isAuthenticated){
+      setError(null);
+      navigation.navigate('Home');
+    }
+    else if(authError){
+     setError(authError);
+    }
+  }, [isAuthenticated, authError, navigation]);
 
   return (
     <ScrollView style={styles.container}>
@@ -36,7 +50,8 @@ const LoginFormScreen = () => {
               icon={EmailIcon}
               secureTextEntry={false}
               value={email}
-              onChangeText={setEmail}
+     
+              onChangeText={text => setEmail(text)}
             />
             <InputField
               placeholder="Password"
@@ -44,8 +59,10 @@ const LoginFormScreen = () => {
               secureTextEntry={true}
               value={password}
               onChangeText={setPassword}
+
             />
           </View>
+          {error && <Text style={styles.errorText}>{error}</Text>}
           <View style={styles.bottomContainer}>
             <Text style={styles.showPasswordText}>Show Password</Text>
             <Text style={styles.forgotText}>Forgot Password?</Text>
@@ -54,7 +71,7 @@ const LoginFormScreen = () => {
         <View style={styles.loginButtonContainer}>
           <LoginButton
             title="Login"
-            onPress={() => console.log('Login clicked')}
+            onPress={() => dispatch(signin({email, password}))}
           />
         </View>
         <View style={styles.dividerContainer}>

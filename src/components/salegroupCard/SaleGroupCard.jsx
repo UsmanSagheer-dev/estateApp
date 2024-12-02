@@ -52,6 +52,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     gap: 13,
+    marginRight: 40,
+
   },
 });
 export default SaleGroupCard;
