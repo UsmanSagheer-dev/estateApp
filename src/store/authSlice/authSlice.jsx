@@ -18,6 +18,7 @@ const authSlice = createSlice({
     signupSuccess: (state, action) => {
       state.currentUser = action.payload; 
       state.isAuthenticated = true;
+      state.error = null;
     },
     signupFailure: (state, action) => {
       state.error = action.payload;
@@ -28,9 +29,15 @@ const authSlice = createSlice({
     signinSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.isAuthenticated = true;
+      state.error = null;
     },
     signinFailure: (state, action) => {
       state.error = action.payload;
+    },
+    signoutSuccess: (state) => {
+      state.currentUser = null;
+      state.isAuthenticated = false;
+      state.error = null;
     },
 
   },
@@ -55,7 +62,7 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
   dispatch(signupStart());
   try {
     const userCredential = await auth().createUserWithEmailAndPassword(email, password);
-    
+
     if (name) {
       await userCredential.user.updateProfile({ displayName: name });
     }
@@ -72,17 +79,19 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
     const sanitizedUser = {
       uid: userCredential.user.uid,
       email: userCredential.user.email,
-      displayName: userCredential.user.displayName || 'Anonymous',
+      displayName: userCredential.user.displayName || name || '',
       photoURL: userCredential.user.photoURL || null,
     };
 
-    dispatch(signupSuccess(sanitizedUser)); 
+    dispatch(signupSuccess(sanitizedUser));
     return sanitizedUser;
   } catch (error) {
-    dispatch(signupFailure(error.message)); 
+    console.error('Registration failed:', error.message); // Debugging error
+    dispatch(signupFailure(error.message)); // Dispatch error to Redux
     throw error;
   }
 };
+
 
 
 export default authSlice.reducer;

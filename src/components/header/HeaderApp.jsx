@@ -1,7 +1,6 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import LocationButton from '../locationButton/LocationButton';
-
 import Bill from '../bilicon/BillIcon';
 import AccountSection from '../accontSection/AccountSection';
 

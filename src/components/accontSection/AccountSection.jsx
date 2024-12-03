@@ -1,13 +1,20 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
-import {Account} from '../../assets/images';
+import { View, Text, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+
 const AccountSection = () => {
+  const { currentUser } = useSelector((state) => state.auth);
+  console.log('🚀 ~ currentUser:', currentUser); // Debug currentUser value
+  
+  const firstCharacter = currentUser?.displayName?.charAt(0).toUpperCase() || 'L';
+  
   return (
     <View style={styles.container}>
-      <Image source={Account} />
+      <Text style={styles.text}>{firstCharacter}</Text>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     width: 50,
@@ -17,6 +24,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1.2,
     borderColor: '#DFDFDF',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
   },
 });
 
