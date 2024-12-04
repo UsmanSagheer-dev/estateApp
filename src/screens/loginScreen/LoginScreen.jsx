@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {View, StyleSheet, Text} from 'react-native';
 import {useAuth} from '../../context/AuthContext';
 import {Loginpic} from '../../assets/images';
@@ -7,7 +8,8 @@ import LoginButton from '../../components/loginButtons/LoginButton';
 import ButtonContainer from '../../components/buttonContainer/ButtonContainer';
 import DividerContainer from '../../components/dividerContainer/DividerContainer';
 import TextAccount from '../../components/textAccount/TextAccount';
-const LoginScreen = ({navigation}) => {
+const LoginScreen = () => {
+  const navigation = useNavigation();
   const {login} = useAuth();
   const data = [
     {image: Loginpic},
@@ -15,6 +17,12 @@ const LoginScreen = ({navigation}) => {
     {image: Loginpic},
     {image: Loginpic},
   ];
+
+  const handleEmailPress = () => {
+    console.log('Navigating to LoginForm');
+    navigation.navigate('LoginForm');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imagecontainer}>
@@ -35,7 +43,7 @@ const LoginScreen = ({navigation}) => {
       <View style={styles.buttoncontainer}>
         <LoginButton
           title="Continue with Email"
-          onPress={() => navigation.navigate('LoginForm')}
+          onPress={handleEmailPress}
         />
       </View>
       <View style={styles.dividerContainer}>

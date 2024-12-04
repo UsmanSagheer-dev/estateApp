@@ -12,6 +12,10 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    rehydrateUser: (state, action) => {
+      state.currentUser = action.payload;
+      state.isAuthenticated = !!action.payload;
+    },
     signupStart: (state) => {
       state.error = null;
     },
@@ -43,7 +47,17 @@ const authSlice = createSlice({
   },
 });
 
-export const { signupStart, signupSuccess, signupFailure, signinStart, signinSuccess, signinFailure } = authSlice.actions;
+export const { 
+  signupStart, 
+  signupSuccess, 
+  signupFailure, 
+  signinStart, 
+  signinSuccess, 
+  signinFailure, 
+  signoutSuccess,
+  rehydrateUser,
+} = authSlice.actions;
+
  
 export const signin = ({ email, password }) => async (dispatch) => {
   dispatch(signinStart());
@@ -55,9 +69,15 @@ export const signin = ({ email, password }) => async (dispatch) => {
   }
 };
 export const signout = () => async (dispatch) => {
-  await auth().signOut();
-  dispatch(signoutSuccess());
+  try {
+    await auth().signOut(); 
+    dispatch(signoutSuccess()); 
+  } catch (error) {
+    console.error('Logout failed:', error.message);
+
+  }
 };
+
 export const signup = ({ email, password, name }) => async (dispatch) => {
   dispatch(signupStart());
   try {
@@ -86,8 +106,8 @@ export const signup = ({ email, password, name }) => async (dispatch) => {
     dispatch(signupSuccess(sanitizedUser));
     return sanitizedUser;
   } catch (error) {
-    console.error('Registration failed:', error.message); // Debugging error
-    dispatch(signupFailure(error.message)); // Dispatch error to Redux
+    console.error('Registration failed:', error.message); 
+    dispatch(signupFailure(error.message)); 
     throw error;
   }
 };
