@@ -14,6 +14,9 @@ import loginformimage from './loginformimage.png'
 import EmailIcon from './emailicon.png'
 import LockIcon from './passwordicon.png'
 import BackArrow from './gobackicon.png'
+import Loginimage2 from './loginimage2.png'
+import Loginimage3 from './loginimage3.png'
+import Loginimage4 from './loginimage4.png'
 export {
     LocationIcon,
     Dropdown,
@@ -31,4 +34,7 @@ export {
     EmailIcon,
     LockIcon,
     BackArrow,
+    Loginimage2,
+    Loginimage3,
+    Loginimage4,
 }
