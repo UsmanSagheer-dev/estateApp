@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {View, StyleSheet, Text} from 'react-native';
 import {useAuth} from '../../context/AuthContext';
-import {Loginpic} from '../../assets/images';
+import {Loginpic, Loginimage2, Loginimage3, Loginimage4} from '../../assets/images';
 import LoginImage from '../../components/loginimage/LoginImage';
 import LoginButton from '../../components/loginButtons/LoginButton';
 import ButtonContainer from '../../components/buttonContainer/ButtonContainer';
@@ -13,9 +13,9 @@ const LoginScreen = () => {
   const {login} = useAuth();
   const data = [
     {image: Loginpic},
-    {image: Loginpic},
-    {image: Loginpic},
-    {image: Loginpic},
+    {image: Loginimage2},
+    {image: Loginimage3},
+    {image: Loginimage4},
   ];
 
   const handleEmailPress = () => {
